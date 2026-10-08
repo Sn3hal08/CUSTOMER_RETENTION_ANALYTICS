@@ -1,7 +1,7 @@
 import pandas as pd
 from pathlib import Path
-def load_data(path):
-    df=pd.read_csv("data/European_Bank.csv")
+def load_data(file_path):
+    df=pd.read_csv(file_path)
     return df
 def clean_data(df):
     df=df.drop(['CustomerId','Surname'],axis=1)
