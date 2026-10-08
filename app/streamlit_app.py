@@ -1,3 +1,4 @@
+from pathlib import Path
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -6,9 +7,8 @@ from src.data_preprocessing import load_data, clean_data
 from src.feature_engineering import add_features
 
 
-# ---------------------------------------------------------
-# PAGE CONFIGURATION
-# ---------------------------------------------------------
+BASE_DIR=Path(__file__).resolve().parent.parent
+DATA_PATH=BASE_DIR/"data"/"European_Bank.csv"
 
 st.set_page_config(
     page_title="Customer Retention Analytics",
@@ -24,7 +24,7 @@ st.set_page_config(
 @st.cache_data
 def load_customer_data():
 
-    df = load_data("data/European_Bank.csv")
+    df = load_data(DATA_PATH)
     df = clean_data(df)
 
     return df
